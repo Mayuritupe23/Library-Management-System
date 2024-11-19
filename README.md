@@ -1,41 +1,82 @@
-### Library Management
 
-App for Manage Library
+# Library Management System
 
-### Installation
+This is a Library Management System (LMS) app that helps manage library members, articles, and transactions. It allows you to issue and return articles, track membership validity, and more.
 
-You can install this app using the [bench](https://github.com/frappe/bench) CLI:
+## Table of Contents
+- Features
+- Installation
+- Usage
+- License
+
+## Features
+### Library Member Management:
+
+- Add and update members with their first name, last name, and full name.
+- Membership is validated before issuing articles.
+
+### Library Membership:
+
+- Members can have a valid membership with start and end dates.
+- Membership automatically expires after a set period.
+- Prevents members from having overlapping active memberships.
+
+### Articles:
+
+- Add articles (books, journals, etc.) to the system.
+- Track article status (Available or Issued).
+- Display details like title, author, publisher, ISBN, and description.
+
+### Library Transactions:
+
+- Issue and return articles.
+- Track article status changes to "Issued" or "Available".
+- Ensure that members cannot exceed the maximum number of articles issued.
+
+## Installation
+1. Clone the repository:
 
 ```bash
-cd $PATH_TO_YOUR_BENCH
-bench get-app $URL_OF_THIS_REPO --branch main
-bench install-app library_management
+
+git clone https://github.com/your-username/your-repository-name.git
 ```
-
-### Contributing
-
-This app uses `pre-commit` for code formatting and linting. Please [install pre-commit](https://pre-commit.com/#installation) and enable it for this repository:
+2. Navigate to the app directory:
 
 ```bash
-cd apps/library_management
-pre-commit install
+
+cd your-repository-name
+```
+3. Install dependencies:
+
+- Make sure you have frappe installed in your environment.
+- Run the following command to install any additional dependencies.
+```bash
+
+pip install -r requirements.txt
+```
+4. Setup the app:
+
+- Use Frappe commands to install the app in your bench.
+```bash
+
+bench new-site your-site-name
+bench --site your-site-name install-app library_management_system
 ```
 
-Pre-commit is configured to use the following tools for checking and formatting your code:
+## Usage
 
-- ruff
-- eslint
-- prettier
-- pyupgrade
+### Add a Library Member:
+- Go to the "Library Member" section and add a new member.
+  
+### Create a Library Membership:
+- Create a new membership for the member, set the start date, and the system will automatically calculate the end date.
+  
+### Issue Articles:
+- Select an article, issue it to a member, and check its status (it will change to "Issued").
 
-### CI
+### Return Articles:
+- When a member returns an article, its status changes back to "Available".
 
-This app can use GitHub Actions for CI. The following workflows are configured:
+## License
+- This project is licensed under the MIT License - see the LICENSE file for details.
 
-- CI: Installs this app and runs unit tests on every push to `develop` branch.
-- Linters: Runs [Frappe Semgrep Rules](https://github.com/frappe/semgrep-rules) and [pip-audit](https://pypi.org/project/pip-audit/) on every pull request.
-
-
-### License
-
-mit
